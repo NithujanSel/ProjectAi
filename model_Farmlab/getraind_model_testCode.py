@@ -6,23 +6,8 @@ from tensorflow.keras.applications.mobilenet import preprocess_input
 IMAGE_SIZE=224
 
 model = load_model("./ResNetmodel") #model in laden
-foto = "./apple_cedar rust.JPG" #De foto inladen om de model te testen
-
-train_path = "./newDataSet"
-
-#included in our dependencies
-train_datagen=ImageDataGenerator(preprocessing_function=preprocess_input)
-
-train_generator=train_datagen.flow_from_directory(train_path,
-                                                 target_size=(IMAGE_SIZE,IMAGE_SIZE),
-                                                 color_mode='rgb',
-                                                 batch_size=32,
-                                                 class_mode='categorical', shuffle=True)
-
-
-klasse = train_generator.class_indices
-
-#print(klasse)
+foto = "./f2.png"#De foto inladen om de model te testen
+label_path = "./ResNetmodel_labels.txt"
 
 #Gaat de foto om zetten naar 224x244 grotte.
 def fotoResize(PATHF):
@@ -46,4 +31,14 @@ print(foftX.shape) #Kijken of de foto goed is
 x = model.predict([foftX])[0] #de foto perdicten welke fase het is
 print(x)
 perdict = np.argmax(x,axis=-1) #Heeft een array aleen de juiste fase pakken
-print(list(klasse.keys())[list(klasse.values()).index(perdict-1)])
+print(perdict)
+with open("./ResNetmodel_labels.txt",'r') as fp:
+    for i, line in enumerate(fp):
+        if i == perdict:
+            print(line)
+            break
+
+
+
+
+#print(list(klasse.keys())[list(klasse.values()).index(perdict-1)])
