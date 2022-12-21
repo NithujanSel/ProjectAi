@@ -17,9 +17,9 @@ camera=cv2.VideoCapture(1)
 # the TFLite converted to be used with edgetpu
 
 # Verander de path van je eigen model
-modelPath = '/home/mendel/AiProject/ModelLoc/ResNet/ResNetmodel_tflite_edgetpu.tflite'
+modelPath = '/home/mendel/coral_webServer/ModelLocatie/ResNet/ResNetmodel_tflite_edgetpu.tflite'
 # Verander de path van je eigen labels
-labelPath = '/home/mendel/AiProject/ModelLoc/ResNet/ResNetmodel_labels.txt'
+labelPath = '/home/mendel/coral_webServer/ModelLocatie/ResNet/ResNetmodel_labels.txt'
 
 modelOutput = "Empty"
 modelLabel = "label"
