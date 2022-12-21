@@ -1,0 +1,3 @@
+Flask==2.2.2
+pycoral==0.1.0
+opencv-python
